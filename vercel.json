@@ -9,7 +9,16 @@
   },
   "routes": [
     {
-      "handle": "filesystem"
+      "src": "/build/(.*)",
+      "dest": "/build/$1"
+    },
+    {
+      "src": "/(css|js|images|fonts|favicon|storage)/(.*)",
+      "dest": "/$1/$2"
+    },
+    {
+      "src": "/(.*)\\.(ico|json|txt|xml|png|jpg|jpeg|svg|webp|woff|woff2)",
+      "dest": "/$1.$2"
     },
     {
       "src": "/(.*)",
