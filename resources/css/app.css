@@ -1,9 +1,26 @@
 @import 'tailwindcss';
 
+@source '../views/**/*.blade.php';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --color-canvas: #FAF8F5;
+    --color-forest: #06231B;
+    --color-forest-soft: #0C362B;
+}
+
+@layer base {
+    button, a, input, textarea, select {
+        @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-600;
+    }
+
+    button:not(:disabled), select {
+        @apply cursor-pointer;
+    }
+
+    button:disabled {
+        @apply cursor-wait opacity-60;
+    }
 }

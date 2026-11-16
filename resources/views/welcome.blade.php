@@ -9,30 +9,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <style type="text/tailwindcss">
-            @theme {
-                --font-sans: 'DM Sans', system-ui, sans-serif;
-                --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
-                --color-canvas: #FAF8F5;
-                --color-forest: #06231B;
-                --color-forest-soft: #0C362B;
-            }
-
-            @layer base {
-                button, a, input, textarea, select {
-                    @apply focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-600;
-                }
-
-                button:not(:disabled), select {
-                    @apply cursor-pointer;
-                }
-
-                button:disabled {
-                    @apply cursor-wait opacity-60;
-                }
-            }
-        </style>
+        @vite(['resources/css/app.css'])
         <style>
             [x-cloak] { display: none !important; }
             @media (min-width: 768px) and (max-width: 1023px) {
