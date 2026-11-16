@@ -9,7 +9,7 @@
         </span>
     </div>
 
-    <form wire:submit="login" class="mt-5 space-y-4">
+    <form wire:submit="login" method="POST" action="#" class="mt-5 space-y-4">
         <div>
             <label for="email" class="mb-1.5 block text-sm font-semibold text-stone-700">
                 Email <span aria-hidden="true" class="text-emerald-600">*</span>

@@ -9,7 +9,7 @@
         </span>
     </div>
 
-    <form wire:submit="register" class="mt-4 space-y-3">
+    <form wire:submit="register" method="POST" action="#" class="mt-4 space-y-3">
         <div>
             <label for="name" class="mb-1 block text-xs font-semibold text-stone-700 sm:text-sm">
                 Nama lengkap <span aria-hidden="true" class="text-emerald-600">*</span>
