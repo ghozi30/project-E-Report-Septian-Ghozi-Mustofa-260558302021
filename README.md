@@ -1,58 +1,171 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📢 E-Report — Layanan Pengaduan Lingkungan Warga
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> *"Suara Warga, Langkah Perubahan"*
 
-## About Laravel
+**E-Report** adalah platform berbasis web modern yang memudahkan warga masyarakat untuk menyampaikan aspirasi dan pengaduan permasalahan fasilitas publik maupun lingkungan (seperti jalan rusak, tumpukan sampah, banjir, lampu penerangan padam, dll.) secara transparan, terstruktur, dan terpantau *real-time*.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Platform ini juga dilengkapi dengan panel khusus Administrator untuk memverifikasi, menindaklanjuti, dan memperbarui status penanganan laporan secara akuntabel.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Fitur Utama
 
-## Learning Laravel
+### 👤 Peran Warga (Pelapor)
+* **Autentikasi Aman:** Pendaftaran akun warga dan login yang responsif.
+* **Buat Pengaduan Lengkap:** Form laporan interaktif dilengkapi judul, kategori, lokasi detail, deskripsi, serta unggahan foto bukti.
+* **Pemantauan Status Real-Time:** Memantau perkembangan laporan dengan status transparan:
+  * 🟡 *Menunggu Verifikasi*
+  * 🔵 *Sedang Diproses*
+  * 🟢 *Selesai*
+  * 🔴 *Ditolak* (disertai alasan/catatan petugas)
+* **Manajemen Laporan:** Melihat riwayat laporan, detail penanganan, serta memperbarui/menghapus laporan yang belum diproses.
+* **Manajemen Profil:** Pengelolaan data pribadi dan nomor kontak WhatsApp.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🛡️ Peran Administrator (Pengelola)
+* **Dashboard Statistik:** Ringkasan total aduan, status pemrosesan, dan metrik penanganan laporan lingkungan.
+* **Verifikasi & Tindak Lanjut:** Mengubah status laporan warga serta memberikan catatan/tanggapan progres tindak lanjut dari instansi terkait.
+* **Hak Akses Terproteksi (RBAC):** Middleware keamanan ketat yang memisahkan area kerja warga dan administrator.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Teknologi yang Digunakan (Tech Stack)
 
-## Agentic Development
+| Kategori | Teknologi | Deskripsi |
+| :--- | :--- | :--- |
+| **Backend Framework** | [Laravel 12](https://laravel.com/) | Framework PHP modern dengan performa andal dan arsitektur modular. |
+| **Bahasa Pemrograman** | [PHP 8.4+](https://www.php.net/) | Memanfaatkan sintaks modern PHP (Property Hooks, Type Safety). |
+| **Fullstack Reactivity** | [Livewire 4](https://livewire.laravel.com/) | UI dinamis dan reaktif tanpa kerumitan framework SPA terpisah. |
+| **Styling & Desain** | [Tailwind CSS v4](https://tailwindcss.com/) | Utility-first CSS framework untuk antarmuka yang bersih dan responsif. |
+| **Client Interaction** | [Alpine.js](https://alpinejs.dev/) | Interaktivitas komponen sisi klien yang ringan. |
+| **Build Tool & Bundler** | [Vite 8](https://vite.dev/) | Bundler aset frontend super cepat untuk CSS & JavaScript. |
+| **Database** | [PostgreSQL](https://www.postgresql.org/) / [SQLite](https://www.sqlite.org/) | PostgreSQL untuk produksi (Supabase) dan fleksibel menggunakan SQLite/MySQL untuk lokal. |
+| **Pengujian (Testing)** | [Pest PHP](https://pestphp.com/) | Framework testing yang elegan dan ekspresif. |
+| **Cloud Hosting** | [Vercel](https://vercel.com/) | Serverless deployment menggunakan runtime `vercel-php@0.9.0`. |
+| **Cloud Database** | [Supabase](https://supabase.com/) | Managed PostgreSQL Database dengan Transaction Connection Pooling. |
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
+## 💻 Panduan Menjalankan Project (Lokal / Development)
+
+Ikuti langkah-langkah berikut untuk menjalankan aplikasi di komputer lokal Anda:
+
+### 1. Prasyarat Sistem
+Pastikan perangkat Anda telah terpasang:
+* **PHP** >= 8.3 atau 8.4 (direkomendasikan PHP 8.4/8.5)
+* **Composer** (Package manager PHP)
+* **Node.js** (v18 ke atas) & **npm**
+* Database: **SQLite** (bawaan Laravel, paling mudah) atau **PostgreSQL** / **MySQL**
+
+### 2. Kloning Repositori
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/ghozi30/E-Report.git
+cd E-Report
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 3. Instalasi Dependensi
+Instal dependensi PHP dan Node.js:
+```bash
+# Instal dependensi backend (Composer)
+composer install
 
-## Contributing
+# Instal dependensi frontend (npm)
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Konfigurasi Environment (`.env`)
+Salin file contoh konfigurasi `.env.example`:
+```bash
+cp .env.example .env
+```
+Lalu buat kunci enkripsi aplikasi:
+```bash
+php artisan key:generate
+```
 
-## Code of Conduct
+> **Tips Cepat Database Lokal:**  
+> Untuk development lokal paling cepat tanpa perlu instal software database server, gunakan SQLite:
+> ```env
+> DB_CONNECTION=sqlite
+> ```
+> Laravel akan otomatis membuat file `database/database.sqlite`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 5. Jalankan Migrasi & Seeder
+Buat struktur tabel dan isi akun default:
+```bash
+php artisan migrate --seed
+```
 
-## Security Vulnerabilities
+### 6. Jalankan Server Pengembangan
+Jalankan server aplikasi beserta Vite:
+```bash
+# Opsi 1: Menjalankan keduanya sekaligus
+composer run dev
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Opsi 2: Menggunakan terminal terpisah
+php artisan serve
+npm run dev
+```
 
-## License
+Buka peramban (browser) dan akses: **`http://localhost:8000`**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 🔐 Akun Default untuk Pengujian
+
+Setelah menjalankan `php artisan db:seed`, akun administrator berikut siap digunakan:
+
+* **Role:** Administrator
+* **Email:** `admin@ereport.test`
+* **Password:** `AdminPassword123!`
+
+*(Untuk akun Warga, Anda dapat mendaftarkan akun baru langsung melalui menu **Daftar** di aplikasi).*
+
+---
+
+## ☁️ Panduan Deployment (Vercel & Supabase)
+
+Proyek ini telah dikonfigurasi agar dapat dideploy ke **Vercel Serverless** dengan database **Supabase PostgreSQL**.
+
+### 1. Struktur Konfigurasi Serverless
+* **`vercel.json`**: Menggunakan runtime `vercel-php@0.9.0` (PHP 8.5) serta routing otomatis aset statis via CDN Vercel.
+* **`api/index.php`**: Bridge serverless yang mengarahkan path session, view cache, dan storage ke direktori ephemeral `/tmp`.
+
+### 2. Environment Variables di Vercel Dashboard
+Tambahkan variabel berikut pada menu **Settings > Environment Variables** di Vercel:
+
+```env
+APP_NAME=E-Report
+APP_ENV=production
+APP_KEY=base64:w54quU33vMXpT6XKuofG+c/SUi7e2QvVt1f9M0zuV7o=
+APP_DEBUG=false
+APP_URL=https://nama-proyek-anda.vercel.app
+
+DB_CONNECTION=pgsql
+DB_HOST=aws-0-ap-southeast-1.pooler.supabase.com
+DB_PORT=6543
+DB_DATABASE=postgres
+DB_USERNAME=postgres.<project-id-supabase>
+DB_PASSWORD=<password-supabase-anda>
+
+SESSION_DRIVER=database
+CACHE_STORE=database
+```
+
+---
+
+## 🧪 Menjalankan Pengujian (Testing)
+
+Proyek ini menggunakan **Pest PHP** untuk pengujian fitur dan unit:
+```bash
+# Menjalankan seluruh pengujian
+php artisan test
+
+# Menjalankan dengan Pest langsung
+vendor/bin/pest
+```
+
+---
+
+## 📄 Lisensi
+
+Proyek ini merupakan perangkat lunak *open-source* di bawah lisensi [MIT License](LICENSE).
