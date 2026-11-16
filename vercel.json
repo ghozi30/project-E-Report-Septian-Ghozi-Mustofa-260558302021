@@ -4,21 +4,12 @@
   "outputDirectory": "public",
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.7.3"
+      "runtime": "vercel-php@0.9.0"
     }
   },
   "routes": [
     {
-      "src": "/build/(.*)",
-      "dest": "/public/build/$1"
-    },
-    {
-      "src": "/(css|js|images|fonts|favicon|storage)/(.*)",
-      "dest": "/public/$1/$2"
-    },
-    {
-      "src": "/(.*)\\.(ico|json|txt|xml|png|jpg|jpeg|svg|webp)",
-      "dest": "/public/$1.$2"
+      "handle": "filesystem"
     },
     {
       "src": "/(.*)",
@@ -28,8 +19,15 @@
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "false",
+    "APP_KEY": "base64:w54quU33vMXpT6XKuofG+c/SUi7e2QvVt1f9M0zuV7o=",
     "LOG_CHANNEL": "stderr",
     "SESSION_DRIVER": "database",
-    "CACHE_STORE": "database"
+    "CACHE_STORE": "database",
+    "APP_CONFIG_CACHE": "/tmp/storage/framework/cache/config.php",
+    "APP_EVENTS_CACHE": "/tmp/storage/framework/cache/events.php",
+    "APP_PACKAGES_CACHE": "/tmp/storage/framework/cache/packages.php",
+    "APP_ROUTES_CACHE": "/tmp/storage/framework/cache/routes.php",
+    "APP_SERVICES_CACHE": "/tmp/storage/framework/cache/services.php",
+    "VIEW_COMPILED_PATH": "/tmp/storage/framework/views"
   }
 }
